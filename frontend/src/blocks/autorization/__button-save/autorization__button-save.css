@@ -1,0 +1,15 @@
+.autorization__button-save {
+    height: 50px;
+    width: 100%;
+    padding: 0;
+    margin: 210px 0 0;
+    border: 0;
+    border-radius: 2px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    cursor: pointer;
+    color: #000;
+    background-color: #fff;
+};

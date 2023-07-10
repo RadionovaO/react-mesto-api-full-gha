@@ -1,0 +1,7 @@
+.autorization__input-error {
+    display: block;
+    color: #ff0000;
+    font-size: 12px;
+    line-height: 12px;
+    min-height: 30px;
+};

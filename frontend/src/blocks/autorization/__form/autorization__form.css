@@ -1,0 +1,6 @@
+.autorization__form {
+    display: flex;
+    flex-direction: column;
+    max-width: 360px;
+    width: 100%;
+};

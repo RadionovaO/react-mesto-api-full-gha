@@ -1,0 +1,8 @@
+.element__name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 15px 21px 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
