@@ -5,7 +5,8 @@ const User = require('../models/user');
 const NotFoundError = require('../errors/notFound');
 const BadRequestError = require('../errors/badRequest');
 const ConflictError = require('../errors/conflict');
-// const { NODE_ENV, JWT_SECRET } = require('../config');
+
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports.createUser = (req, res, next) => {
   const {
@@ -32,7 +33,7 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.status(200).send({ data: users }))
+    .then((users) => res.status(200).send(users))
     .catch((err) => next(err));
 };
 
@@ -65,7 +66,7 @@ module.exports.updateUser = (req, res, next) => {
     },
   )
     .orFail(new NotFoundError('Пользователь по указанному _id не найден'))
-    .then((updatedUser) => res.send({ data: updatedUser }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные при обновлении профиля'));
@@ -89,7 +90,7 @@ module.exports.changeAvatar = (req, res, next) => {
       runValidators: true,
     },
   )
-    .then((newAvatar) => res.send({ data: newAvatar }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные при обновлении аватара'));
@@ -106,14 +107,16 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
+        NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key',
         // JWT_SECRET,
-        'some-secret-key',
+        // 'some-secret-key',
         // { expiresIn: '7d' },
       );
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         sameSite: true,
+        expiresIn: '7d',
         // secure: NODE_ENV === 'production',
       });
       res.send({ token });

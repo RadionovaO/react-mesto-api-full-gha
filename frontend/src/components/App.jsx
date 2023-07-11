@@ -58,9 +58,9 @@ function App() {
             return
         }
         auth.login(email, password)
-        .then((data) => {
-            if (data.token) {
-                setEmail(email);
+        .then((res) => {
+            if (res.token) {
+                setEmail(res.email);
                 setValues({ email: '', password: '' });
                 navigate('/', { replace: true });
                 handleLogin();
@@ -80,12 +80,12 @@ function App() {
     };
 
     function tokenCheck() {
-        // const jwt = localStorage.getItem('jwt');
-         // if (jwt) {
+         // const jwt = localStorage.getItem('jwt');
+          // if (jwt) {
             auth.checkToken()
                 .then((res) => {
                     if (res) {
-                        setEmail(res.data.email);
+                        setEmail(res.email);
                         setLoggedIn(true);
                         navigate('/', { replace: true });
                     }
@@ -93,7 +93,7 @@ function App() {
                 .catch((err) => {
                     console.log(err);
                 });
-        // };
+         // };
     };
 
     useEffect(() => {
@@ -113,11 +113,11 @@ function App() {
     };
 
     useEffect(() => {
-        if (loggedIn) {
+        if (loggedIn === true) {
             Promise.all([api.getUserInfo(), api.getInitialCards()])
                 .then(([usersData, cardSection]) => {
                     console.log(cardSection.data)
-                    setCurrentUser(usersData.data);
+                    setCurrentUser(usersData);
                     setCards(cardSection.data);
                 })
                 .catch((err) => {
@@ -200,12 +200,12 @@ function App() {
             });
     };
 
-    function handleUpdateAvatar(data) {
+    function handleUpdateAvatar(avatar) {
         setIsLoading(true);
         api
-            .changeAvatar(data)
-            .then((avatar) => {
-                setCurrentUser(avatar);
+            .changeAvatar(avatar)
+            .then((res) => {
+                setCurrentUser(res);
                 closeAllPopups();
             })
             .catch((err) => {

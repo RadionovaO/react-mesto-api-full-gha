@@ -46,7 +46,6 @@ class Api {
         return fetch(`${this.baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this.headers,
-            'Content-Type': 'application/json',
             credentials: 'include',
 
             body: JSON.stringify({
