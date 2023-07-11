@@ -5,7 +5,7 @@ const User = require('../models/user');
 const NotFoundError = require('../errors/notFound');
 const BadRequestError = require('../errors/badRequest');
 const ConflictError = require('../errors/conflict');
-const { NODE_ENV, JWT_SECRET } = require('../config');
+// const { NODE_ENV, JWT_SECRET } = require('../config');
 
 module.exports.createUser = (req, res, next) => {
   const {
@@ -32,7 +32,7 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.status(200).send(users))
+    .then((users) => res.status(200).send({ data: users }))
     .catch((err) => next(err));
 };
 
@@ -106,15 +106,15 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        JWT_SECRET,
-        // 'some-secret',
-        { expiresIn: '7d' },
+        // JWT_SECRET,
+        'some-secret-key',
+        // { expiresIn: '7d' },
       );
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         sameSite: true,
-        secure: NODE_ENV === 'production',
+        // secure: NODE_ENV === 'production',
       });
       res.send({ token });
     })

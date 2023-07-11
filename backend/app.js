@@ -5,9 +5,9 @@ const { errors } = require('celebrate');
 const routes = require('./routes');
 const { errorsHandler } = require('./middlewares/errorsHandler');
 const cors = require('./middlewares/cors');
-const { PORT, MONGODB } = require('./config');
+// const { PORT, MONGODB } = require('./config');
 
-// const { PORT = 3000 } = process.env;
+const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(express.json());
@@ -15,7 +15,7 @@ app.use(cookieParser());
 
 app.use(cors);
 
-mongoose.connect(MONGODB);
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 app.use(routes);
 
