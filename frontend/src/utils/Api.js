@@ -123,7 +123,7 @@ class Api {
 };
 
 const api = new Api({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://api.appmesto.students.nomoreparties.sbs',
     headers: {
        // authorization: '15144cc9-7b57-4999-8446-a83117a0b7b6',
        // authorization: `Bearer ${localStorage.getItem('jwt')}`,
