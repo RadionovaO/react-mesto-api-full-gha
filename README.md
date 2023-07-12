@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.40.177
+IP 158.160.40.177
 
 Frontend https://appmesto.students.nomoreparties.sbs
 
