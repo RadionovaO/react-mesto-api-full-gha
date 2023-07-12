@@ -1,8 +1,8 @@
 const allowedCors = [
-  // 'https://api.appmesto.students.nomoreparties.sbs',
-  // 'http://api.appmesto.students.nomoreparties.sbs',
-  // 'https://appmesto.students.nomoreparties.sbs',
-  // 'http://appmesto.students.nomoreparties.sbs',
+  'https://api.appmesto.students.nomoreparties.sbs',
+  'http://api.appmesto.students.nomoreparties.sbs',
+  'https://appmesto.students.nomoreparties.sbs',
+  'http://appmesto.students.nomoreparties.sbs',
   'http://localhost:3000',
   'http://localhost:3001',
 ];
