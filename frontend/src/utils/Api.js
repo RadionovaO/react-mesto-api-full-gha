@@ -1,5 +1,5 @@
-// export const BASE_URL = 'http://localhost:3000';
-export const BASE_URL = 'https://api.appmesto.students.nomoreparties.sbs';
+ export const BASE_URL = 'http://localhost:3000';
+// export const BASE_URL = 'https://api.appmesto.students.nomoreparties.sbs';
 
 class Api {
     constructor({ baseUrl, headers }) {
@@ -123,7 +123,7 @@ class Api {
 };
 
 const api = new Api({
-   // baseUrl: 'https://api.appmesto.students.nomoreparties.sbs',
+    // baseUrl: 'https://api.appmesto.students.nomoreparties.sbs',
     baseUrl: BASE_URL,
     headers: {
        // authorization: '15144cc9-7b57-4999-8446-a83117a0b7b6',
