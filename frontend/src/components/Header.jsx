@@ -8,7 +8,7 @@ function Header({ loggedIn, setLoggedIn, email }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     function signOut() {
-        localStorage.removeItem('jwt');
+       // localStorage.removeItem('jwt');
         setLoggedIn(false);
         navigate('/sign-in');
         setIsMenuOpen(false);

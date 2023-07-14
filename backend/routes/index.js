@@ -35,6 +35,10 @@ router.post('/signup', celebrate({
 
 router.use(auth);
 
+router.get('/signout', (req, res) => {
+  res.clearCookie('jwt');
+});
+
 router.use(routerUsers);
 router.use(routerCards);
 

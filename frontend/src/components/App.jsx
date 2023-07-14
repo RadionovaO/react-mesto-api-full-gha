@@ -60,7 +60,7 @@ function App() {
         auth.login(email, password)
         .then((res) => {
             if (res.token) {
-                setEmail(res.email);
+               // setEmail(res.email);
                 setValues({ email: '', password: '' });
                 navigate('/', { replace: true });
                 handleLogin();
@@ -118,6 +118,7 @@ function App() {
                 .then(([usersData, cardSection]) => {
                     console.log(cardSection.data)
                     setCurrentUser(usersData);
+                    setEmail(usersData.email);
                     setCards(cardSection.data);
                 })
                 .catch((err) => {
