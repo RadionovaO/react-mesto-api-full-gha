@@ -1,5 +1,5 @@
- export const BASE_URL = 'http://localhost:3000';
-// export const BASE_URL = 'https://api.appmesto.students.nomoreparties.sbs';
+// export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'https://api.appmesto.students.nomoreparties.sbs';
 
  const checkResponse = (res) => {
     if (res.ok) {

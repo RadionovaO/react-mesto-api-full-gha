@@ -7,8 +7,8 @@
     color: #fff;
     text-decoration: none;
     transition: opacity .6s linear;
-};
+}
 
 .autorization__link:hover {
     opacity: .6;
-};
+}
