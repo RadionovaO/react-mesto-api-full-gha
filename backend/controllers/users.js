@@ -123,3 +123,7 @@ module.exports.login = (req, res, next) => {
     })
     .catch((err) => next(err));
 };
+
+module.exports.signOut = (req, res) => {
+  res.clearCookie('jwt').send({ message: 'Выход' });
+};

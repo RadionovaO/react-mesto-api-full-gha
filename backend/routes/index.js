@@ -4,7 +4,7 @@ const {
 } = require('celebrate');
 const routerUsers = require('./users');
 const routerCards = require('./cards');
-const { createUser, login } = require('../controllers/users');
+const { createUser, login, signOut } = require('../controllers/users');
 const { auth } = require('../middlewares/auth');
 const regex = require('../middlewares/regex');
 
@@ -35,9 +35,7 @@ router.post('/signup', celebrate({
 
 router.use(auth);
 
-router.get('/signout', (req, res) => {
-  res.clearCookie('jwt');
-});
+router.get('/signout', signOut);
 
 router.use(routerUsers);
 router.use(routerCards);

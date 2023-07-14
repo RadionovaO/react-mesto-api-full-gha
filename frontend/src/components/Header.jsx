@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../images/logo.svg';
+import { signOut } from '../../../backend/controllers/users';
 
-function Header({ loggedIn, setLoggedIn, email }) {
+function Header({ loggedIn, setLoggedIn, email, signOut }) {
     const location = useLocation();
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,8 +11,9 @@ function Header({ loggedIn, setLoggedIn, email }) {
     function onSignOut() {
        // localStorage.removeItem('jwt');
         setLoggedIn(false);
-        navigate('/sign-in');
+        navigate('/sign-in', {replace: true});
         setIsMenuOpen(false);
+        signOut();
     };
 
     return (
