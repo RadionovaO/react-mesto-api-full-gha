@@ -249,7 +249,7 @@ function App() {
 
         <CurrentUserContext.Provider value={currentUser}>
         <div className='page__content'>
-                <Header email={email} loggedIn={loggedIn} onSignOut={onSignOut} />
+                <Header email={email} onSignOut={onSignOut} />
                 
             <Routes>
                     <Route path='/sign-up' element={<Register
