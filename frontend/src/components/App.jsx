@@ -85,7 +85,7 @@ function App() {
             auth.checkToken()
                 .then((res) => {
                     if (res) {
-                        setEmail(res.email);
+                       // setEmail(res.email);
                         setLoggedIn(true);
                         navigate('/', { replace: true });
                     }
@@ -99,6 +99,18 @@ function App() {
     useEffect(() => {
         tokenCheck();
     }, []);
+
+    function onSignOut() {
+        auth.signOut()
+            .then(() => {
+                setEmail('');
+                setLoggedIn(false);
+                navigate('/', { replace: false });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
     function openInfoTooltip() {
         setIsInfoTooltipOpen(true);
@@ -237,7 +249,7 @@ function App() {
 
         <CurrentUserContext.Provider value={currentUser}>
         <div className='page__content'>
-                <Header email={ email } loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+                <Header email={email} onSignOut={ onSignOut } />
                 
             <Routes>
                     <Route path='/sign-up' element={<Register

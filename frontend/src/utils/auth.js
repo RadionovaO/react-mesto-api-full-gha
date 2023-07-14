@@ -44,9 +44,21 @@ export const checkToken = (token) => {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            "Authorization" : `Bearer ${token}`
+            "Authorization": `Bearer ${token}`
         },
         credentials: 'include',
     })
         .then((res) => checkResponse(res));
-}
+    
+};
+
+export const signOut = () => {
+    return fetch(`${BASE_URL}/signout`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+    })
+        .then((res) => checkResponse(res));
+};
