@@ -7,7 +7,7 @@ function Header({ loggedIn, setLoggedIn, email, signOut }) {
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    function onSignOut() {
+    function signOutUser() {
        // localStorage.removeItem('jwt');
         setIsMenuOpen(false);
         signOut();
@@ -29,7 +29,7 @@ function Header({ loggedIn, setLoggedIn, email, signOut }) {
                     <>
                         <div className='header__container'>
                             <p className='header__text'>{email}</p>
-                            <button className='header__button' onClick={onSignOut}>Выйти</button>
+                            <button className='header__button' onClick={signOutUser}>Выйти</button>
                         </div> 
                     </>    
             )}
