@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../images/logo.svg';
 
-function Header({ loggedIn, setLoggedIn, email, signOut }) {
+function Header({ loggedIn, setLoggedIn, email, onSignOut }) {
     const location = useLocation();
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,7 +10,7 @@ function Header({ loggedIn, setLoggedIn, email, signOut }) {
     function signOutUser() {
        // localStorage.removeItem('jwt');
         setIsMenuOpen(false);
-        signOut();
+        onSignOut();
     };
 
     return (
