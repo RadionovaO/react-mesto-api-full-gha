@@ -105,7 +105,7 @@ function App() {
             .then(() => {
                 setEmail('');
                 setLoggedIn(false);
-                //navigate('/', { replace: false });
+                navigate('/signin', { replace: false });
             })
             .catch((err) => {
                 console.log(err);
